@@ -20,7 +20,7 @@ pub mod template;
 pub use agent::{Agent, AgentConfig, AgentMode, DefaultAgent, InteractiveAgent};
 pub use config::{get_config_from_spec, recursive_merge};
 pub use environments::{DockerEnvironment, LocalEnvironment};
-pub use models::{ModelConfig, OpenAiModel, TextBasedModel};
+pub use models::{LlmConnectorModel, ModelConfig, TextBasedModel};
 
 use std::sync::{Mutex, OnceLock};
 

@@ -8,7 +8,7 @@ use serde_json::{Map, Value};
 
 use crate::{
     config::{get_config_from_spec, global_config_dir, load_global_config, recursive_merge},
-    models::{ApiMode, OpenAiModel, TextBasedModel},
+    models::{ApiMode, LlmConnectorModel, TextBasedModel},
     Agent, AgentConfig, DefaultAgent, DockerEnvironment, InteractiveAgent, LocalEnvironment,
 };
 
@@ -185,7 +185,7 @@ fn build_model(config: &Value) -> anyhow::Result<Box<dyn crate::Model>> {
     if lower.contains("textbased") || lower.contains("text_based") {
         Ok(Box::new(TextBasedModel::from_value(model_config)?))
     } else {
-        Ok(Box::new(OpenAiModel::from_value_with_mode(
+        Ok(Box::new(LlmConnectorModel::from_value_with_mode(
             model_config,
             ApiMode::ToolCalls,
         )?))

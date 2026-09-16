@@ -30,7 +30,7 @@ pub enum ApiMode {
 }
 
 /// Generic OpenAI-compatible model implementation.
-pub struct OpenAiModel {
+pub struct LlmConnectorModel {
     pub config: ModelConfig,
     pub mode: ApiMode,
     client: LlmClient,
@@ -38,7 +38,7 @@ pub struct OpenAiModel {
     max_retries: u32,
 }
 
-impl OpenAiModel {
+impl LlmConnectorModel {
     pub fn from_value(value: Value) -> anyhow::Result<Self> {
         let config: ModelConfig =
             serde_json::from_value(value).context("invalid model configuration")?;
@@ -232,7 +232,7 @@ impl OpenAiModel {
 }
 
 #[async_trait]
-impl Model for OpenAiModel {
+impl Model for LlmConnectorModel {
     fn model_name(&self) -> &str {
         &self.config.model_name
     }
@@ -274,7 +274,7 @@ impl Model for OpenAiModel {
             "info": {
                 "config": {
                     "model": serde_json::to_value(&self.config).unwrap_or(Value::Null),
-                    "model_type": "mini_swe_agent.models.openai.OpenAiModel",
+                    "model_type": "mini_swe_agent.models.llm_connector.LlmConnectorModel",
                 }
             }
         })
@@ -282,7 +282,7 @@ impl Model for OpenAiModel {
 }
 
 /// Text-based model adapter, matching the Python `litellm_textbased` class.
-pub struct TextBasedModel(pub OpenAiModel);
+pub struct TextBasedModel(pub LlmConnectorModel);
 
 impl TextBasedModel {
     pub fn from_value(value: Value) -> anyhow::Result<Self> {
@@ -293,7 +293,7 @@ impl TextBasedModel {
             .action_regex
             .clone()
             .unwrap_or_else(|| DEFAULT_TEXT_ACTION_REGEX.to_string());
-        Ok(Self(OpenAiModel::new(
+        Ok(Self(LlmConnectorModel::new(
             config,
             ApiMode::Text { action_regex },
         )?))
@@ -331,7 +331,8 @@ impl Model for TextBasedModel {
     fn serialize(&self) -> Value {
         let mut value = self.0.serialize();
         if let Some(config) = value.pointer_mut("/info/config/model_type") {
-            *config = Value::String("mini_swe_agent.models.openai.TextBasedModel".to_string());
+            *config =
+                Value::String("mini_swe_agent.models.llm_connector.TextBasedModel".to_string());
         }
         value
     }

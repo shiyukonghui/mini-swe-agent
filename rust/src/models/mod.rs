@@ -1,8 +1,8 @@
 //! Model implementations and protocol helpers.
 
-pub mod openai;
+pub mod llm_connector;
 
-pub use openai::{ApiMode, OpenAiModel, TextBasedModel};
+pub use llm_connector::{ApiMode, LlmConnectorModel, TextBasedModel};
 
 use std::time::{SystemTime, UNIX_EPOCH};
 
