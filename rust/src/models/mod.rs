@@ -48,6 +48,8 @@ fn default_format_error_template() -> String {
 pub struct ModelConfig {
     pub model_name: String,
     pub model_class: Option<String>,
+    pub provider: Option<String>,
+    pub service_name: Option<String>,
     pub base_url: Option<String>,
     pub api_key: Option<String>,
     pub model_kwargs: Map<String, Value>,
@@ -72,6 +74,8 @@ impl Default for ModelConfig {
         Self {
             model_name: String::new(),
             model_class: None,
+            provider: None,
+            service_name: None,
             base_url: None,
             api_key: None,
             model_kwargs: Map::new(),

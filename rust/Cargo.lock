@@ -787,7 +787,6 @@ dependencies = [
  "llm-connector",
  "minijinja",
  "regex",
- "reqwest",
  "serde",
  "serde_json",
  "serde_yaml",

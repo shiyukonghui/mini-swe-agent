@@ -75,14 +75,12 @@
       "role": "user"
     },
     {
-      "annotations": null,
-      "audio": null,
-      "content": "I'll perform the requested steps exactly as specified.\n\nStep 1: Run the Python command.\n\n",
+      "content": "",
       "extra": {
         "actions": [
           {
             "command": "python -c \"print(6 * 7)\"",
-            "tool_call_id": "chatcmpl-tool-82ef89fe048a5db5"
+            "tool_call_id": "chatcmpl-tool-919c1818c0dd8ae9"
           }
         ],
         "cost": 0.0,
@@ -91,14 +89,8 @@
             {
               "finish_reason": "tool_calls",
               "index": 0,
-              "logprobs": null,
               "message": {
-                "annotations": null,
-                "audio": null,
-                "content": "I'll perform the requested steps exactly as specified.\n\nStep 1: Run the Python command.\n\n",
-                "function_call": null,
-                "reasoning": "The user wants me to run exactly two commands. Let me do step 1 first.",
-                "refusal": null,
+                "content": [],
                 "role": "assistant",
                 "tool_calls": [
                   {
@@ -106,43 +98,27 @@
                       "arguments": "{\"command\": \"python -c \\\"print(6 * 7)\\\"\"}",
                       "name": "bash"
                     },
-                    "id": "chatcmpl-tool-82ef89fe048a5db5",
+                    "id": "chatcmpl-tool-919c1818c0dd8ae9",
                     "type": "function"
                   }
                 ]
-              },
-              "routed_experts": null,
-              "stop_reason": null,
-              "token_ids": null
+              }
             }
           ],
-          "created": 1789538662,
-          "ec_transfer_params": null,
-          "id": "chatcmpl-a0159afd2ce740c6",
-          "kv_transfer_params": null,
-          "metrics": null,
+          "content": "I'll perform the requested steps exactly as specified.\n\nStep 1: Run the Python command.\n\n",
+          "created": 1789540757,
+          "id": "chatcmpl-8804545277a7ce7e",
           "model": "deepseek-v4.1-flash",
           "object": "chat.completion",
-          "prompt_logprobs": null,
-          "prompt_text": null,
-          "prompt_token_ids": null,
-          "service_tier": null,
           "system_fingerprint": "vllm-0.5.2-tp8-ep-ff177f0d",
           "usage": {
             "completion_tokens": 84,
-            "completion_tokens_details": {
-              "reasoning_tokens": 18
-            },
             "prompt_tokens": 1038,
-            "prompt_tokens_details": null,
             "total_tokens": 1122
           }
         },
-        "timestamp": 1789538936.0376966
+        "timestamp": 1789541030.8153493
       },
-      "function_call": null,
-      "reasoning": "The user wants me to run exactly two commands. Let me do step 1 first.",
-      "refusal": null,
       "role": "assistant",
       "tool_calls": [
         {
@@ -150,7 +126,7 @@
             "arguments": "{\"command\": \"python -c \\\"print(6 * 7)\\\"\"}",
             "name": "bash"
           },
-          "id": "chatcmpl-tool-82ef89fe048a5db5",
+          "id": "chatcmpl-tool-919c1818c0dd8ae9",
           "type": "function"
         }
       ]
@@ -161,20 +137,18 @@
         "exception_info": "",
         "raw_output": "42\n",
         "returncode": 0,
-        "timestamp": 1789538936.101294
+        "timestamp": 1789541030.8802977
       },
       "role": "tool",
-      "tool_call_id": "chatcmpl-tool-82ef89fe048a5db5"
+      "tool_call_id": "chatcmpl-tool-919c1818c0dd8ae9"
     },
     {
-      "annotations": null,
-      "audio": null,
-      "content": "Step 1 completed successfully (output: 42). Now Step 2: finish with the required echo command.\n\n",
+      "content": "",
       "extra": {
         "actions": [
           {
             "command": "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT",
-            "tool_call_id": "chatcmpl-tool-bb20cdeaae204682"
+            "tool_call_id": "chatcmpl-tool-861265d213f080bb"
           }
         ],
         "cost": 0.0,
@@ -183,14 +157,8 @@
             {
               "finish_reason": "tool_calls",
               "index": 0,
-              "logprobs": null,
               "message": {
-                "annotations": null,
-                "audio": null,
-                "content": "Step 1 completed successfully (output: 42). Now Step 2: finish with the required echo command.\n\n",
-                "function_call": null,
-                "reasoning": "Step 1 done. Now step 2: run echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT. Do not combine with any other command.",
-                "refusal": null,
+                "content": [],
                 "role": "assistant",
                 "tool_calls": [
                   {
@@ -198,43 +166,27 @@
                       "arguments": "{\"command\": \"echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT\"}",
                       "name": "bash"
                     },
-                    "id": "chatcmpl-tool-bb20cdeaae204682",
+                    "id": "chatcmpl-tool-861265d213f080bb",
                     "type": "function"
                   }
                 ]
-              },
-              "routed_experts": null,
-              "stop_reason": null,
-              "token_ids": null
+              }
             }
           ],
-          "created": 1789538663,
-          "ec_transfer_params": null,
-          "id": "chatcmpl-bdbf3a3675350cc7",
-          "kv_transfer_params": null,
-          "metrics": null,
+          "content": "",
+          "created": 1789540758,
+          "id": "chatcmpl-8a07dd12c742bb42",
           "model": "deepseek-v4.1-flash",
           "object": "chat.completion",
-          "prompt_logprobs": null,
-          "prompt_text": null,
-          "prompt_token_ids": null,
-          "service_tier": null,
           "system_fingerprint": "vllm-0.5.2-tp8-ep-ff177f0d",
           "usage": {
-            "completion_tokens": 109,
-            "completion_tokens_details": {
-              "reasoning_tokens": 35
-            },
-            "prompt_tokens": 1150,
-            "prompt_tokens_details": null,
-            "total_tokens": 1259
+            "completion_tokens": 59,
+            "prompt_tokens": 1114,
+            "total_tokens": 1173
           }
         },
-        "timestamp": 1789538936.958158
+        "timestamp": 1789541031.3319726
       },
-      "function_call": null,
-      "reasoning": "Step 1 done. Now step 2: run echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT. Do not combine with any other command.",
-      "refusal": null,
       "role": "assistant",
       "tool_calls": [
         {
@@ -242,7 +194,7 @@
             "arguments": "{\"command\": \"echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT\"}",
             "name": "bash"
           },
-          "id": "chatcmpl-tool-bb20cdeaae204682",
+          "id": "chatcmpl-tool-861265d213f080bb",
           "type": "function"
         }
       ]

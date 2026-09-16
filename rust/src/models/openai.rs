@@ -78,7 +78,15 @@ impl OpenAiModel {
             })
             .unwrap_or(10);
 
-        let client = LlmClient::openai(&api_key, &base_url)
+        let provider = config
+            .provider
+            .clone()
+            .unwrap_or_else(|| infer_provider(&config.model_name));
+        let service_name = config
+            .service_name
+            .clone()
+            .unwrap_or_else(|| "openai_compatible".to_string());
+        let client = create_client(&provider, &api_key, &base_url, &service_name)
             .map_err(|error| anyhow::anyhow!("could not create llm-connector client: {error}"))?;
 
         Ok(Self {
@@ -537,8 +545,57 @@ fn resolve_api_key(model_name: &str, explicit: Option<&str>) -> Option<String> {
         .find_map(|key| std::env::var(key).ok().filter(|value| !value.is_empty()))
 }
 
+fn create_client(
+    provider: &str,
+    api_key: &str,
+    base_url: &str,
+    service_name: &str,
+) -> std::result::Result<LlmClient, llm_connector::LlmConnectorError> {
+    match provider.to_ascii_lowercase().as_str() {
+        "anthropic" | "claude" => LlmClient::anthropic(api_key, base_url),
+        "google" | "gemini" => LlmClient::google(api_key, base_url),
+        "ollama" => LlmClient::ollama(base_url),
+        "zhipu" | "glm" => LlmClient::zhipu(api_key, base_url),
+        "aliyun" | "qwen" | "dashscope" => LlmClient::aliyun(api_key, base_url),
+        "openai_compatible" | "compatible" => {
+            LlmClient::openai_compatible(api_key, base_url, service_name)
+        }
+        _ => LlmClient::openai(api_key, base_url),
+    }
+}
+
+fn infer_provider(model_name: &str) -> String {
+    let provider = model_name
+        .split_once('/')
+        .map(|(provider, _)| provider)
+        .unwrap_or(model_name);
+    match provider.to_ascii_lowercase().as_str() {
+        "anthropic" | "claude" => "anthropic".to_string(),
+        "google" | "gemini" => "google".to_string(),
+        "ollama" => "ollama".to_string(),
+        "zhipu" | "glm" => "zhipu".to_string(),
+        "aliyun" | "qwen" | "dashscope" => "aliyun".to_string(),
+        "deepseek" | "moonshot" | "openrouter" => "openai_compatible".to_string(),
+        _ => "openai".to_string(),
+    }
+}
+
 fn effective_model_name(model_name: &str) -> String {
-    for prefix in ["openai/", "openrouter/"] {
+    for prefix in [
+        "openai/",
+        "openrouter/",
+        "anthropic/",
+        "google/",
+        "gemini/",
+        "ollama/",
+        "zhipu/",
+        "glm/",
+        "aliyun/",
+        "qwen/",
+        "dashscope/",
+        "deepseek/",
+        "moonshot/",
+    ] {
         if let Some(stripped) = model_name.strip_prefix(prefix) {
             return stripped.to_string();
         }

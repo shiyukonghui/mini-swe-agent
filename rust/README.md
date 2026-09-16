@@ -29,7 +29,7 @@ cargo run --bin mini -- -c mini.yaml -c model.model_kwargs.temperature=0.2 -t ".
 | 模块 | 职责 |
 | --- | --- |
 | `config` | YAML/键值配置加载、递归合并、内置配置嵌入 |
-| `models` | OpenAI-compatible chat completions、tool-call 与 text-based 动作解析 |
+| `models` | 基于 `llm-connector` 的通用 LLM 接入、tool-call 与 text-based 动作解析 |
 | `environments` | 本地 shell 与 Docker 执行环境，异步进程与超时控制 |
 | `agent` | 线性 query -> execute -> observe 循环、限额、格式错误恢复、轨迹保存 |
 | `template` | 基于 minijinja 的 Jinja 兼容模板渲染 |
@@ -47,10 +47,11 @@ cargo run --bin mini -- -c mini.yaml -c model.model_kwargs.temperature=0.2 -t ".
 
 ## 当前范围与限制
 
-- 模型层实现 OpenAI-compatible `/chat/completions`。OpenRouter 等兼容网关可通过 `base_url` 配置。
-- `litellm` 的完整 provider 矩阵、成本计算、Anthropic cache control、Responses API 与多模态扩展暂未完全等价实现。
+- 模型层通过 `llm-connector = "=1.4.0"` 提供通用协议支持，默认使用 OpenAI-compatible `/chat/completions`；可通过 `provider` / `service_name` 选择 `llm-connector` 支持的 provider。
+- `llm-connector` 的 provider 协议已接入，但 mini-SWE-agent 侧的成本计算、Anthropic cache control、Responses API 与多模态扩展仍在逐步补齐。
 - `interactive` 模式提供显式终端确认（human / confirm / yolo）；暂不包含 Python 版本的 rich/textual TUI。
 - Docker 环境要求宿主机安装 `docker` 或 `podman`，并通过 `--environment-class docker` 选择。
 
 这些边界都可以通过实现对应 trait 逐步替换，而不需要修改 agent 控制循环。
+
 

@@ -65,26 +65,26 @@
             "arguments": "{\"command\": \"python -c \\\"print(6 * 7)\\\"\"}",
             "name": "bash"
           },
-          "id": "chatcmpl-tool-b3e296f7773b031f",
+          "id": "chatcmpl-tool-8ae6a285f7f9d3a5",
           "type": "function"
         }
       ],
       "function_call": null,
       "reasoning_content": "The user wants me to run exactly two commands. Let me do step 1 first.",
       "provider_specific_fields": {
-        "refusal": null,
-        "reasoning": "The user wants me to run exactly two commands. Let me do step 1 first."
+        "reasoning": "The user wants me to run exactly two commands. Let me do step 1 first.",
+        "refusal": null
       },
       "extra": {
         "actions": [
           {
             "command": "python -c \"print(6 * 7)\"",
-            "tool_call_id": "chatcmpl-tool-b3e296f7773b031f"
+            "tool_call_id": "chatcmpl-tool-8ae6a285f7f9d3a5"
           }
         ],
         "response": {
-          "id": "chatcmpl-ae1cb0d2cb228742",
-          "created": 1789538659,
+          "id": "chatcmpl-a621133199ee78c7",
+          "created": 1789540754,
           "model": "deepseek-v4.1-flash",
           "object": "chat.completion",
           "system_fingerprint": "vllm-0.5.2-tp8-ep-ff177f0d",
@@ -101,21 +101,21 @@
                       "arguments": "{\"command\": \"python -c \\\"print(6 * 7)\\\"\"}",
                       "name": "bash"
                     },
-                    "id": "chatcmpl-tool-b3e296f7773b031f",
+                    "id": "chatcmpl-tool-8ae6a285f7f9d3a5",
                     "type": "function"
                   }
                 ],
                 "function_call": null,
                 "reasoning_content": "The user wants me to run exactly two commands. Let me do step 1 first.",
                 "provider_specific_fields": {
-                  "refusal": null,
-                  "reasoning": "The user wants me to run exactly two commands. Let me do step 1 first."
+                  "reasoning": "The user wants me to run exactly two commands. Let me do step 1 first.",
+                  "refusal": null
                 }
               },
               "provider_specific_fields": {
-                "token_ids": null,
                 "stop_reason": null,
-                "routed_experts": null
+                "routed_experts": null,
+                "token_ids": null
               }
             }
           ],
@@ -141,7 +141,7 @@
           "metrics": null
         },
         "cost": 0.0,
-        "timestamp": 1789538933.5315816
+        "timestamp": 1789541028.6077762
       }
     },
     {
@@ -149,14 +149,14 @@
       "extra": {
         "raw_output": "42\n",
         "returncode": 0,
-        "timestamp": 1789538933.591159,
+        "timestamp": 1789541028.664038,
         "exception_info": ""
       },
-      "tool_call_id": "chatcmpl-tool-b3e296f7773b031f",
+      "tool_call_id": "chatcmpl-tool-8ae6a285f7f9d3a5",
       "role": "tool"
     },
     {
-      "content": "Step 1 completed successfully with output `42`. Now I'll finish with the required final command.\n\n",
+      "content": "Step 1 completed successfully (output: 42). Now Step 2: finish with the required echo command.\n\n",
       "role": "assistant",
       "tool_calls": [
         {
@@ -164,26 +164,26 @@
             "arguments": "{\"command\": \"echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT\"}",
             "name": "bash"
           },
-          "id": "chatcmpl-tool-a08d6af7718cc997",
+          "id": "chatcmpl-tool-80ab2659ff6ff7d0",
           "type": "function"
         }
       ],
       "function_call": null,
       "reasoning_content": "Step 1 done. Now step 2: run echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT. Do not combine with any other command.",
       "provider_specific_fields": {
-        "refusal": null,
-        "reasoning": "Step 1 done. Now step 2: run echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT. Do not combine with any other command."
+        "reasoning": "Step 1 done. Now step 2: run echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT. Do not combine with any other command.",
+        "refusal": null
       },
       "extra": {
         "actions": [
           {
             "command": "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT",
-            "tool_call_id": "chatcmpl-tool-a08d6af7718cc997"
+            "tool_call_id": "chatcmpl-tool-80ab2659ff6ff7d0"
           }
         ],
         "response": {
-          "id": "chatcmpl-a797a4e449c6c90d",
-          "created": 1789538660,
+          "id": "chatcmpl-ad2dd8424811c899",
+          "created": 1789540755,
           "model": "deepseek-v4.1-flash",
           "object": "chat.completion",
           "system_fingerprint": "vllm-0.5.2-tp8-ep-ff177f0d",
@@ -192,7 +192,7 @@
               "finish_reason": "tool_calls",
               "index": 0,
               "message": {
-                "content": "Step 1 completed successfully with output `42`. Now I'll finish with the required final command.\n\n",
+                "content": "Step 1 completed successfully (output: 42). Now Step 2: finish with the required echo command.\n\n",
                 "role": "assistant",
                 "tool_calls": [
                   {
@@ -200,28 +200,28 @@
                       "arguments": "{\"command\": \"echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT\"}",
                       "name": "bash"
                     },
-                    "id": "chatcmpl-tool-a08d6af7718cc997",
+                    "id": "chatcmpl-tool-80ab2659ff6ff7d0",
                     "type": "function"
                   }
                 ],
                 "function_call": null,
                 "reasoning_content": "Step 1 done. Now step 2: run echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT. Do not combine with any other command.",
                 "provider_specific_fields": {
-                  "refusal": null,
-                  "reasoning": "Step 1 done. Now step 2: run echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT. Do not combine with any other command."
+                  "reasoning": "Step 1 done. Now step 2: run echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT. Do not combine with any other command.",
+                  "refusal": null
                 }
               },
               "provider_specific_fields": {
-                "token_ids": null,
                 "stop_reason": null,
-                "routed_experts": null
+                "routed_experts": null,
+                "token_ids": null
               }
             }
           ],
           "usage": {
-            "completion_tokens": 106,
+            "completion_tokens": 109,
             "prompt_tokens": 1150,
-            "total_tokens": 1256,
+            "total_tokens": 1259,
             "completion_tokens_details": {
               "accepted_prediction_tokens": null,
               "audio_tokens": null,
@@ -240,7 +240,7 @@
           "metrics": null
         },
         "cost": 0.0,
-        "timestamp": 1789538934.4318402
+        "timestamp": 1789541029.3630295
       }
     },
     {
