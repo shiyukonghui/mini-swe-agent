@@ -1,0 +1,4 @@
+You are in a Windows command shell. Perform exactly these steps:
+1. Run `echo start && echo middle && echo end`.
+2. Finish by running `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`.
+Do not run any other commands.

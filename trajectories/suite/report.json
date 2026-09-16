@@ -1,0 +1,203 @@
+[
+  {
+    "name": "file_roundtrip",
+    "exact_with_assistant_content": false,
+    "role_match": true,
+    "action_match": true,
+    "observation_match": true,
+    "exit_match": true,
+    "assistant_content_match": false,
+    "python_commands": [
+      [
+        "echo alpha > case_file.txt"
+      ],
+      [
+        "echo beta >> case_file.txt"
+      ],
+      [
+        "type case_file.txt"
+      ],
+      [
+        "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT"
+      ]
+    ],
+    "rust_commands": [
+      [
+        "echo alpha > case_file.txt"
+      ],
+      [
+        "echo beta >> case_file.txt"
+      ],
+      [
+        "type case_file.txt"
+      ],
+      [
+        "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT"
+      ]
+    ],
+    "python_exit": {
+      "exit_status": "Submitted",
+      "submission": ""
+    },
+    "rust_exit": {
+      "exit_status": "Submitted",
+      "submission": ""
+    }
+  },
+  {
+    "name": "python_compute",
+    "exact_with_assistant_content": false,
+    "role_match": true,
+    "action_match": true,
+    "observation_match": true,
+    "exit_match": true,
+    "assistant_content_match": false,
+    "python_commands": [
+      [
+        "python -c \"print(6 * 7)\""
+      ],
+      [
+        "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT"
+      ]
+    ],
+    "rust_commands": [
+      [
+        "python -c \"print(6 * 7)\""
+      ],
+      [
+        "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT"
+      ]
+    ],
+    "python_exit": {
+      "exit_status": "Submitted",
+      "submission": ""
+    },
+    "rust_exit": {
+      "exit_status": "Submitted",
+      "submission": ""
+    }
+  },
+  {
+    "name": "error_recovery",
+    "exact_with_assistant_content": true,
+    "role_match": true,
+    "action_match": true,
+    "observation_match": true,
+    "exit_match": true,
+    "assistant_content_match": true,
+    "python_commands": [
+      [
+        "dir this_file_does_not_exist_12345"
+      ],
+      [
+        "echo recovered"
+      ],
+      [
+        "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT"
+      ]
+    ],
+    "rust_commands": [
+      [
+        "dir this_file_does_not_exist_12345"
+      ],
+      [
+        "echo recovered"
+      ],
+      [
+        "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT"
+      ]
+    ],
+    "python_exit": {
+      "exit_status": "Submitted",
+      "submission": ""
+    },
+    "rust_exit": {
+      "exit_status": "Submitted",
+      "submission": ""
+    }
+  },
+  {
+    "name": "multi_file",
+    "exact_with_assistant_content": false,
+    "role_match": true,
+    "action_match": true,
+    "observation_match": true,
+    "exit_match": true,
+    "assistant_content_match": false,
+    "python_commands": [
+      [
+        "mkdir case_dir"
+      ],
+      [
+        "echo one > case_dir\\one.txt"
+      ],
+      [
+        "echo two > case_dir\\two.txt"
+      ],
+      [
+        "type case_dir\\one.txt && type case_dir\\two.txt"
+      ],
+      [
+        "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT"
+      ]
+    ],
+    "rust_commands": [
+      [
+        "mkdir case_dir"
+      ],
+      [
+        "echo one > case_dir\\one.txt"
+      ],
+      [
+        "echo two > case_dir\\two.txt"
+      ],
+      [
+        "type case_dir\\one.txt && type case_dir\\two.txt"
+      ],
+      [
+        "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT"
+      ]
+    ],
+    "python_exit": {
+      "exit_status": "Submitted",
+      "submission": ""
+    },
+    "rust_exit": {
+      "exit_status": "Submitted",
+      "submission": ""
+    }
+  },
+  {
+    "name": "chain_commands",
+    "exact_with_assistant_content": false,
+    "role_match": true,
+    "action_match": true,
+    "observation_match": true,
+    "exit_match": true,
+    "assistant_content_match": false,
+    "python_commands": [
+      [
+        "echo start && echo middle && echo end"
+      ],
+      [
+        "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT"
+      ]
+    ],
+    "rust_commands": [
+      [
+        "echo start && echo middle && echo end"
+      ],
+      [
+        "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT"
+      ]
+    ],
+    "python_exit": {
+      "exit_status": "Submitted",
+      "submission": ""
+    },
+    "rust_exit": {
+      "exit_status": "Submitted",
+      "submission": ""
+    }
+  }
+]

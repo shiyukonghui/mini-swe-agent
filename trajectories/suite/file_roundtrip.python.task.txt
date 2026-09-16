@@ -1,0 +1,6 @@
+You are in a Windows command shell. Perform exactly these steps:
+1. Run `echo alpha > case_file.txt`.
+2. Run `echo beta >> case_file.txt`.
+3. Run `type case_file.txt`.
+4. Finish by running `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`.
+Do not run any other commands.

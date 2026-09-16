@@ -1,0 +1,5 @@
+You are in a Windows command shell. Perform exactly these steps:
+1. Run `dir this_file_does_not_exist_12345`.
+2. Run `echo recovered`.
+3. Finish by running `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`.
+Do not run any other commands.

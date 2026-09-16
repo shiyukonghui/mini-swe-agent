@@ -1,0 +1,8 @@
+You are in a Windows command shell. Perform exactly these steps:
+1. Run `mkdir case_dir`.
+2. Run `echo one > case_dir\one.txt`.
+3. Run `echo two > case_dir\two.txt`.
+4. Run `type case_dir\one.txt && type case_dir\two.txt`.
+5. Finish by running `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`.
+
+IMPORTANT: Each numbered step must be a separate bash tool call. Never combine multiple steps with &&, &, ;, or newlines. Do not run any other commands.
